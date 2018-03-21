@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Smart Door TimeLine</title>
+  <h1> Smart Door Timeline</h1>
+  <style type="text/css">
+    body, html {
+      font-family: sans-serif;
+    }
+  </style>
+
+  <script src="vis-4.21.0\dist\vis.js"></script>
+  <script src="js\jquery-3.3.1.min.js"></script>
+  <link href="vis-4.21.0\dist\vis.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="visualization"></div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+/**
+ * Reading JSON data of smart Door Timeline from database server
+ */
+$.ajax({
+    url : "http://localhost/smartDoorTimeline/api/timelinedata.php", //connecting to data.php which prints all info.
+    type : "GET",
+    success : function(data){ //if data has been aquired
+        console.log(data);
+    // DOM element where the Timeline will be attached
+  var container = document.getElementById('visualization');
+
+  // Create a DataSet (allows two way data-binding)
+  var items = new vis.DataSet(data);
+
+  // Configuration for the Timeline
+  var options = {};
+
+  // Create a Timeline
+  var timeline = new vis.Timeline(container, items, options);
+
+    },
+    error : function(data) {
+       // console.log(data);
+    }
+}); //close of ajax call
+
+}); //close of document ready 
+</script>
+</body>
+</html>
