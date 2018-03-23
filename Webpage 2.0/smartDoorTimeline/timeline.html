@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Smart Door TimeLine</title>
+ 
+  <style type="text/css">
+    body, html {
+      font-family: sans-serif;
+    }
+</style>
+ 
+
+  <script src="vis-4.21.0\dist\vis.js"></script>
+  <script src="js\jquery-3.3.1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="icon" href="../../loginAssets/pilogo.png">
+  <link href="vis-4.21.0\dist\vis.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <style>
+
+    body{
+      background: #c850c0;
+      background: -webkit-linear-gradient(45deg, #ffffff, #d4d4d4);
+      background: -o-linear-gradient(45deg, #ffffff, #d4d4d4);
+      background: -moz-linear-gradient(45deg, #ffffff, #d4d4d4);
+      background: linear-gradient(45deg, #ffffff, #d4d4d4);
+    }
+
+    h1{
+      font-family:'Saira Extra Condensed', serif;
+      font-size: 80px;
+      color: rgb(80,80,80);
+    }
+    .vis-item {
+      border-color: rgb(255, 0, 98);
+      background-color: #dc3545;
+      color:white;
+      border-radius: .25rem;
+      border: 1px solid transparent;
+      
+    }
+
+    .centerd{
+    width: 80rem;
+    height: 600px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+
+    }
+    
+
+  </style>
+
+ <!-- load handlebars for templating, and create a template -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+  <script id="item-template" type="text/x-handlebars-template">
+    
+    <table>
+      <tr>
+        <td style="font-size: 20px;">{{content}}</td>
+      </tr>
+      <tr>
+        <td><img src="people/{{content}}.png" width="90" height="90" alt="content" onerror="this.src='people/None.png'"></td>
+      </tr>
+    </table>
+  </script>
+
+</head>
+<body>
+  <br>
+<div id="visualization" class="centerd"> <h1>TIMELINE <a class="btn btn-primary btn-lg btn-danger" target="_blank" href="../homepage/home.php" onclick="self.close()">Back</a> </h1> </div>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+/**
+ * Reading JSON data of smart Door Timeline from database server
+ */
+$.ajax({
+    url : "http://38.88.74.88/smartDoorTimeline/api/timelinedata.php", //connecting to data.php which prints all info.
+    type : "GET",
+    success : function(data){ //if data has been aquired
+        console.log(data);
+    // DOM element where the Timeline will be attached
+    var container = document.getElementById('visualization');
+    var source   = document.getElementById('item-template').innerHTML;
+    var template = Handlebars.compile(document.getElementById('item-template').innerHTML);
+
+  // Create a DataSet (allows two way data-binding)
+  var items = new vis.DataSet(data);
+
+  // Configuration for the Timeline
+  var options = {
+     template: template
+  };
+
+  // Create a Timeline
+  var timeline = new vis.Timeline(container, items, options);
+
+    },
+    error : function(data) {
+       // console.log(data);
+    }
+}); //close of ajax call
+
+}); //close of document ready 
+</script>
+</body>
+</html>
