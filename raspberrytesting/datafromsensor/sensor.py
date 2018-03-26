@@ -1,7 +1,10 @@
 #!/usr/bin/python
 import sys
 import Adafruit_DHT
-import RPi.GPIO as GPIO, time, os      
+import RPi.GPIO as GPIO, time, os  
+import smbus
+import time
+     
  
 DEBUG = 1
 GPIO.setmode(GPIO.BCM)
@@ -20,6 +23,21 @@ def RCtime (RCpin):
  
 
 while True:
+    bus = smbus.SMBus(1)
+ 
+    bus.write_byte_data(0x39, 0x00 | 0x80, 0x03)
+	bus.write_byte_data(0x39, 0x01 | 0x80, 0x02)
+ 
+	time.sleep(0.5)
+	data = bus.read_i2c_block_data(0x39, 0x0C | 0x80, 2)
+	data1 = bus.read_i2c_block_data(0x39, 0x0E | 0x80, 2)
+	 
+	# Convert the data
+	ch0 = data[1] * 256 + data[0]
+	ch1 = data1[1] * 256 + data1[0]
+	
+	
+	
     humidity, temperature = Adafruit_DHT.read_retry(11, 4)
 
     print 'Temp: {0:0.1f} C  Humidity: {1:0.1f} %'.format(temperature, humidity)
@@ -27,3 +45,11 @@ while True:
     print 'light level'
    
     print RCtime(18)  # Read RC timing using pin #18
+	
+	print "----" *5
+	
+	print "Full Spectrum(IR + Visible) :%d lux" %ch0
+    
+	print "Infrared Value :%d lux" %ch1
+    
+	print "Visible Value :%d lux" %(ch0 - ch1)
