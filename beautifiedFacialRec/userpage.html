@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="icon" href="pilogo.png">
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/resume.css" rel="stylesheet">
+  <link href="css/override-style.css" rel="stylesheet">
+
+  <!-- Scripts -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+  <title>User Page</title>
+  <style type="text/css">
+  h1{
+    font-family: 'Saira Extra Condensed', serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #343a40;
+    text-align: center;
+    font-size: 7rem;
+  }
+
+  h2{
+    font-family: 'Saira Extra Condensed', serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #343a40;
+    font-size: 5rem;
+    text-align: center;
+  }
+
+  .old-tv-screen {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    width: 600px;
+    height: 400px;
+    position: relative;
+    margin: 20px 0;
+    border: none;
+    -webkit-border-radius: 50% / 10%;
+    border-radius: 50% / 20%;
+    font: normal 100%/normal Arial, Helvetica, sans-serif;
+    color: white;
+    text-align: center;
+    text-indent: 0.1em;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .old-tv-screen::before {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    position: absolute;
+    content: "";
+    top: 10%;
+    right: -5%;
+    bottom: 10%;
+    left: -5%;
+    border: none;
+    -webkit-border-radius: 5% / 50%;
+    border-radius: 5% / 50%;
+    font: normal 100%/normal Arial, Helvetica, sans-serif;
+    color: rgba(0,0,0,1);
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    text-shadow: none;
+  }
+  form{
+    display:inline-block;
+  }
+
+  .form-cont{
+    width: 151px;
+    height: 100px;
+    margin: auto;
+    padding-top: 1rem;
+  }
+</style>
+</head>
+
+<body style="background:linear-gradient(45deg, #ffffff, #efecec)">
+
+
+  <div style="width: 120px;height: 150px;margin: auto;">
+    <img src="pilogo.png" height="150" width="120">
+  </div>
+  <div style="width: 600px; margin: auto; height: 400px;">
+
+    <img style="" id="bg" class="old-tv-screen" src="ANAS.png" height="400" width="550" align="middle">
+  </div>
+
+  <h1 style="padding-top: 4rem; color: #9c4c4b;">{{ Name }} </h1>
+  <h2 >{{ Email }} </h2>
+  <div class="form-cont">
+
+    <form  method="POST" action="/deleteuser">
+      <input type="submit" class="btn btn-primary btn-danger" name="capture" value="Delete User" style="height:50px;width:150px;font-size: 16px;"/>
+    </form>
+  </div>
+
+</body>
+</html>
