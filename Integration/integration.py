@@ -12,6 +12,10 @@ GPIO.setup(5,GPIO.OUT) # for cb1
 GPIO.setup(6,GPIO.OUT) # for cb5
 GPIO.setup(13,GPIO.OUT) # for cb9
 GPIO.setup(19,GPIO.OUT) # for cb13
+GPIO.setup(26,GPIO.OUT) # for cb2 
+GPIO.setup(20,GPIO.OUT) # for cb4
+GPIO.setup(21,GPIO.OUT) # for cb6
+GPIO.setup(22,GPIO.OUT) # for cb10
 
 """
 returns a string in json format containing button stats
@@ -110,16 +114,38 @@ def main():
                 GPIO.output(19,GPIO.HIGH)
             else:
                 GPIO.output(19,GPIO.LOW)
-
-            #Reading Temperature and Humidity 
-            humidity, temperature = Adafruit_DHT.read_retry(11, 24)
-            pressure = 47
-            # Sending Sensor Data to webpage 
-            #NOTE: pressure sensor not yet reading, hence sending empty variable 
-            addSensorData(temperature,humidity,pressure)
+			
+			if buttonsStatus['cb2'] == "on": #Humidity :Living Room
+                GPIO.output(26,GPIO.HIGH)
+            else:
+                GPIO.output(26,GPIO.LOW)
             
-            piDone()
+            if buttonsStatus['cb4'] == "on": #Front Door : Door 1 
+                GPIO.output(20,GPIO.HIGH)
+            else:
+                GPIO.output(20,GPIO.LOW)
+			
+			if buttonsStatus['cb6'] == "on": #Front Door : Door 1 
+                GPIO.output(21,GPIO.HIGH)
+            else:
+                GPIO.output(21,GPIO.LOW)
+			
+			if buttonsStatus['cb10'] == "on": #Front Door : Door 1 
+                GPIO.output(22,GPIO.HIGH)
+            else:
+                GPIO.output(22,GPIO.LOW)
+			
+			piDone()
         
+		
+		#Reading Temperature and Humidity 
+        humidity, temperature = Adafruit_DHT.read_retry(11, 24)
+        pressure = 47
+        #Sending Sensor Data to webpage 
+        #NOTE: pressure sensor not yet reading, hence sending empty variable 
+        addSensorData(temperature,humidity,pressure)
+		
+		
 
 #Calling main
 main()
