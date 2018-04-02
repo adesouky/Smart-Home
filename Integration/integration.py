@@ -1,4 +1,4 @@
-import urllib.request as urllib2
+import urllib2 
 import time
 import RPi.GPIO as GPIO
 import sys
@@ -18,8 +18,7 @@ returns a string in json format containing button stats
 """
 def getButtonStats():
 	button_status = urllib2.urlopen("http://38.88.74.88/homepage/button_stat_get.php").read()
-	output = button_status.decode('utf-8')
-	return output
+	return button_status
 
 
 """
@@ -70,8 +69,7 @@ Checks change flag , which signifies that the user has changed website settings
 """
 def changeOccurred():
 	string = urllib2.urlopen("http://38.88.74.88/homepage/get_changeFlag_status.php").read()
-	output = string.decode('utf-8')
-	return output
+	return string
 
 """
 Helper function that resets change flag , used in piDone
@@ -86,7 +84,7 @@ def main():
     
     while True:
 
-        if changeOccurred() == "1": #Assuming changeOccured() returns string "1" if true
+        if changeOccurred() == "true": #Assuming changeOccured() returns string "1" if true
             
             #Get status of buttons as JSON Object 
             buttonsStatus = json.loads(getButtonStats())
@@ -114,7 +112,7 @@ def main():
                 GPIO.output(19,GPIO.LOW)
 
             #Reading Temperature and Humidity 
-            humidity, temperature = Adafruit_DHT.read_retry(11, 4)
+            humidity, temperature = Adafruit_DHT.read_retry(11, 24)
             pressure = 47
             # Sending Sensor Data to webpage 
             #NOTE: pressure sensor not yet reading, hence sending empty variable 
