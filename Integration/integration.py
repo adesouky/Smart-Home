@@ -1,6 +1,6 @@
 import urllib2 
 import time
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
 import sys
 import Adafruit_DHT
 import json
@@ -114,8 +114,7 @@ def main():
                 GPIO.output(19,GPIO.HIGH)
             else:
                 GPIO.output(19,GPIO.LOW)
-			
-			if buttonsStatus['cb2'] == "on": #Humidity :Living Room
+            if buttonsStatus['cb2'] == "on": #Humidity :Living Room
                 GPIO.output(26,GPIO.HIGH)
             else:
                 GPIO.output(26,GPIO.LOW)
@@ -124,21 +123,16 @@ def main():
                 GPIO.output(20,GPIO.HIGH)
             else:
                 GPIO.output(20,GPIO.LOW)
-			
-			if buttonsStatus['cb6'] == "on": #Front Door : Door 1 
+            if buttonsStatus['cb6'] == "on": #Front Door : Door 1 
                 GPIO.output(21,GPIO.HIGH)
             else:
                 GPIO.output(21,GPIO.LOW)
-			
-			if buttonsStatus['cb10'] == "on": #Front Door : Door 1 
+            if buttonsStatus['cb10'] == "on": #Front Door : Door 1 
                 GPIO.output(22,GPIO.HIGH)
             else:
                 GPIO.output(22,GPIO.LOW)
-			
-			piDone()
-        
-		
-		#Reading Temperature and Humidity 
+            piDone()
+        #Reading Temperature and Humidity 
         humidity, temperature = Adafruit_DHT.read_retry(11, 24)
         pressure = 47
         #Sending Sensor Data to webpage 
