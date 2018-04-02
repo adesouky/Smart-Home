@@ -8,10 +8,10 @@ import json
 #LED declaration
 GPIO.setmode(GPIO.BCM)
 # NOTE : Change pins accordingly
-GPIO.setup(1,GPIO.OUT) # for cb1 
-GPIO.setup(5,GPIO.OUT) # for cb5
-GPIO.setup(9,GPIO.OUT) # for cb9
-GPIO.setup(13,GPIO.OUT) # for cb13
+GPIO.setup(5,GPIO.OUT) # for cb1 
+GPIO.setup(6,GPIO.OUT) # for cb5
+GPIO.setup(13,GPIO.OUT) # for cb9
+GPIO.setup(19,GPIO.OUT) # for cb13
 
 """
 returns a string in json format containing button stats
@@ -94,24 +94,24 @@ def main():
             #Turns corresponding task of buttons; Only using 4 buttons from each
             #for demsonstation
             if buttonsStatus['cb1'] == "on": #Temperature : Living Room
-                GPIO.output(1,GPIO.HIGH)
-            else:
-                GPIO.output(1,GPIO.LOW)
-            
-            if buttonsStatus['cb5'] == "on": #Lighting : Living Room
                 GPIO.output(5,GPIO.HIGH)
             else:
                 GPIO.output(5,GPIO.LOW)
             
-            if buttonsStatus['cb9'] == "on": #Humidity :Living Room
-                GPIO.output(9,GPIO.HIGH)
+            if buttonsStatus['cb5'] == "on": #Lighting : Living Room
+                GPIO.output(6,GPIO.HIGH)
             else:
-                GPIO.output(9,GPIO.LOW)
+                GPIO.output(6,GPIO.LOW)
+            
+            if buttonsStatus['cb9'] == "on": #Humidity :Living Room
+                GPIO.output(13,GPIO.HIGH)
+            else:
+                GPIO.output(13,GPIO.LOW)
             
             if buttonsStatus['cb11'] == "on": #Front Door : Door 1 
-                GPIO.output(11,GPIO.HIGH)
+                GPIO.output(19,GPIO.HIGH)
             else:
-                GPIO.output(11,GPIO.LOW)
+                GPIO.output(19,GPIO.LOW)
 
             #Reading Temperature and Humidity 
             humidity, temperature = Adafruit_DHT.read_retry(11, 4)
