@@ -1,20 +1,19 @@
-import urllib2 
+import urllib.request as urllib2
 import time
 
 """
 returns a string in json format containing button stats
-
 """
 def getButtonStats():
 	button_status = urllib2.urlopen("http://38.88.74.88/homepage/button_stat_get.php").read()
-	return button_status
+	output = button_status.decode('utf-8')
+	return output
 
 
 """
 temprature : temp reading
 humidity : hum reading
 pressure : pressure reading
-
 """
 def addSensorData(temprature,humidity,pressure):
 	urllib2.urlopen("http://38.88.74.88/dataLogging/add_sensor_readings.php?temp="+str(temprature)+"&hum="+str(humidity)+"&pr="+str(pressure)).read()
@@ -26,7 +25,6 @@ def addSensorData(temprature,humidity,pressure):
 accessStats : true if granted , false if denied
 name: name of subject (if false supply any name)
 time format must be exactly : 2017-01-02T05:00:00
-
 """
 def addDoorData(accessStatus,name,time):
 	if(accessStatus):
@@ -60,7 +58,8 @@ Checks change flag , which signifies that the user has changed website settings
 """
 def changeOccurred():
 	string = urllib2.urlopen("http://38.88.74.88/homepage/get_changeFlag_status.php").read()
-	return string
+	output = string.decode('utf-8')
+	return output
 
 """
 Helper function that resets change flag , used in piDone
@@ -69,9 +68,3 @@ def resetChangeFlag():
 	urllib2.urlopen("http://38.88.74.88/homepage/set_changeFlag_false.php").read()
 	time.sleep(1)
 	return
-	
-
-
-
-
-
