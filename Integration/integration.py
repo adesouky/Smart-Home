@@ -1,4 +1,4 @@
-import urllib2 
+import urllib.request as urllib2
 import time
 import RPi.GPIO as GPIO
 import sys
@@ -15,18 +15,17 @@ GPIO.setup(13,GPIO.OUT) # for cb13
 
 """
 returns a string in json format containing button stats
-
 """
 def getButtonStats():
 	button_status = urllib2.urlopen("http://38.88.74.88/homepage/button_stat_get.php").read()
-	return button_status
+	output = button_status.decode('utf-8')
+	return output
 
 
 """
 temprature : temp reading
 humidity : hum reading
 pressure : pressure reading
-
 """
 def addSensorData(temprature,humidity,pressure):
 	urllib2.urlopen("http://38.88.74.88/dataLogging/add_sensor_readings.php?temp="+str(temprature)+"&hum="+str(humidity)+"&pr="+str(pressure)).read()
@@ -38,7 +37,6 @@ def addSensorData(temprature,humidity,pressure):
 accessStats : true if granted , false if denied
 name: name of subject (if false supply any name)
 time format must be exactly : 2017-01-02T05:00:00
-
 """
 def addDoorData(accessStatus,name,time):
 	if(accessStatus):
@@ -72,7 +70,8 @@ Checks change flag , which signifies that the user has changed website settings
 """
 def changeOccurred():
 	string = urllib2.urlopen("http://38.88.74.88/homepage/get_changeFlag_status.php").read()
-	return string
+	output = string.decode('utf-8')
+	return output
 
 """
 Helper function that resets change flag , used in piDone
@@ -87,7 +86,7 @@ def main():
     
     while True:
 
-        if(changeOccurred()=="1") #Assuming changeOccured() returns string "1" if true
+        if changeOccurred() == "1": #Assuming changeOccured() returns string "1" if true
             
             #Get status of buttons as JSON Object 
             buttonsStatus = json.loads(getButtonStats())
@@ -96,22 +95,22 @@ def main():
             #for demsonstation
             if buttonsStatus['cb1'] == "on": #Temperature : Living Room
                 GPIO.output(1,GPIO.HIGH)
-            else
+            else:
                 GPIO.output(1,GPIO.LOW)
             
             if buttonsStatus['cb5'] == "on": #Lighting : Living Room
                 GPIO.output(5,GPIO.HIGH)
-            else
+            else:
                 GPIO.output(5,GPIO.LOW)
             
             if buttonsStatus['cb9'] == "on": #Humidity :Living Room
                 GPIO.output(9,GPIO.HIGH)
-            else
+            else:
                 GPIO.output(9,GPIO.LOW)
             
             if buttonsStatus['cb11'] == "on": #Front Door : Door 1 
                 GPIO.output(11,GPIO.HIGH)
-            else
+            else:
                 GPIO.output(11,GPIO.LOW)
 
             #Reading Temperature and Humidity 
@@ -124,7 +123,8 @@ def main():
             piDone()
         
 
-
+#Calling main
+main()
             
 
 
