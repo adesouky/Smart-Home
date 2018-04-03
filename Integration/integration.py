@@ -1,6 +1,6 @@
 import urllib2 
 import time
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
 import sys
 import Adafruit_DHT
 import json
@@ -8,14 +8,17 @@ import json
 #LED declaration
 GPIO.setmode(GPIO.BCM)
 # NOTE : Change pins accordingly
-GPIO.setup(1,GPIO.OUT) # for cb1 
-GPIO.setup(5,GPIO.OUT) # for cb5
-GPIO.setup(9,GPIO.OUT) # for cb9
-GPIO.setup(13,GPIO.OUT) # for cb13
+GPIO.setup(5,GPIO.OUT) # for cb1 
+GPIO.setup(6,GPIO.OUT) # for cb5
+GPIO.setup(13,GPIO.OUT) # for cb9
+GPIO.setup(19,GPIO.OUT) # for cb13
+GPIO.setup(26,GPIO.OUT) # for cb2 
+GPIO.setup(20,GPIO.OUT) # for cb4
+GPIO.setup(21,GPIO.OUT) # for cb6
+GPIO.setup(22,GPIO.OUT) # for cb10
 
 """
 returns a string in json format containing button stats
-
 """
 def getButtonStats():
 	button_status = urllib2.urlopen("http://38.88.74.88/homepage/button_stat_get.php").read()
@@ -26,7 +29,6 @@ def getButtonStats():
 temprature : temp reading
 humidity : hum reading
 pressure : pressure reading
-
 """
 def addSensorData(temprature,humidity,pressure):
 	urllib2.urlopen("http://38.88.74.88/dataLogging/add_sensor_readings.php?temp="+str(temprature)+"&hum="+str(humidity)+"&pr="+str(pressure)).read()
@@ -38,7 +40,6 @@ def addSensorData(temprature,humidity,pressure):
 accessStats : true if granted , false if denied
 name: name of subject (if false supply any name)
 time format must be exactly : 2017-01-02T05:00:00
-
 """
 def addDoorData(accessStatus,name,time):
 	if(accessStatus):
@@ -87,7 +88,7 @@ def main():
     
     while True:
 
-        if(changeOccurred()=="1") #Assuming changeOccured() returns string "1" if true
+        if changeOccurred() == "true": #Assuming changeOccured() returns string "1" if true
             
             #Get status of buttons as JSON Object 
             buttonsStatus = json.loads(getButtonStats())
@@ -95,36 +96,53 @@ def main():
             #Turns corresponding task of buttons; Only using 4 buttons from each
             #for demsonstation
             if buttonsStatus['cb1'] == "on": #Temperature : Living Room
-                GPIO.output(1,GPIO.HIGH)
-            else
-                GPIO.output(1,GPIO.LOW)
-            
-            if buttonsStatus['cb5'] == "on": #Lighting : Living Room
                 GPIO.output(5,GPIO.HIGH)
-            else
+            else:
                 GPIO.output(5,GPIO.LOW)
             
+            if buttonsStatus['cb5'] == "on": #Lighting : Living Room
+                GPIO.output(6,GPIO.HIGH)
+            else:
+                GPIO.output(6,GPIO.LOW)
+            
             if buttonsStatus['cb9'] == "on": #Humidity :Living Room
-                GPIO.output(9,GPIO.HIGH)
-            else
-                GPIO.output(9,GPIO.LOW)
+                GPIO.output(13,GPIO.HIGH)
+            else:
+                GPIO.output(13,GPIO.LOW)
             
             if buttonsStatus['cb11'] == "on": #Front Door : Door 1 
-                GPIO.output(11,GPIO.HIGH)
-            else
-                GPIO.output(11,GPIO.LOW)
-
-            #Reading Temperature and Humidity 
-            humidity, temperature = Adafruit_DHT.read_retry(11, 4)
-            pressure = 47
-            # Sending Sensor Data to webpage 
-            #NOTE: pressure sensor not yet reading, hence sending empty variable 
-            addSensorData(temperature,humidity,pressure)
+                GPIO.output(19,GPIO.HIGH)
+            else:
+                GPIO.output(19,GPIO.LOW)
+            if buttonsStatus['cb2'] == "on": #Humidity :Living Room
+                GPIO.output(26,GPIO.HIGH)
+            else:
+                GPIO.output(26,GPIO.LOW)
             
+            if buttonsStatus['cb4'] == "on": #Front Door : Door 1 
+                GPIO.output(20,GPIO.HIGH)
+            else:
+                GPIO.output(20,GPIO.LOW)
+            if buttonsStatus['cb6'] == "on": #Front Door : Door 1 
+                GPIO.output(21,GPIO.HIGH)
+            else:
+                GPIO.output(21,GPIO.LOW)
+            if buttonsStatus['cb10'] == "on": #Front Door : Door 1 
+                GPIO.output(22,GPIO.HIGH)
+            else:
+                GPIO.output(22,GPIO.LOW)
             piDone()
-        
+        #Reading Temperature and Humidity 
+        humidity, temperature = Adafruit_DHT.read_retry(11, 24)
+        pressure = 47
+        #Sending Sensor Data to webpage 
+        #NOTE: pressure sensor not yet reading, hence sending empty variable 
+        addSensorData(temperature,humidity,pressure)
+		
+		
 
-
+#Calling main
+main()
             
 
 
