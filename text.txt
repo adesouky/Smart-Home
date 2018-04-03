@@ -1,0 +1,13 @@
+.imgDiv{
+  height: 210px;
+  width: 300px;
+}
+
+p{
+  font-family: 'Saira Extra Condensed', serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #343a40;
+    text-align: center;
+    font-size: 4rem;
+}
