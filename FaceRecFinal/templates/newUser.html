@@ -1,0 +1,90 @@
+<!doctype html>
+<!-- Theme obtained from bootstrap.com-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="{{ url_for('static', filename='Assets/pilogo.png') }}">
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+  <!-- Material Walkthrough styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='material-walkthrough/dist/material-walkthrough.min.css') }}">
+  <title>Image Registration</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- Custom styles for this template -->
+  <link href="{{ url_for('static', filename='Assets/floating-labels.css') }}" rel="stylesheet">
+  <script type="text/javascript" src="Assets/login.js"></script>
+
+  <style type="text/css">
+  h1{
+  font-family: 'Saira Extra Condensed', serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #343a40;
+    font-size: 5rem;
+  }
+    h3{
+  font-family: 'Saira Extra Condensed', serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #343a40;
+    font-size: 4rem;
+  }
+
+
+</style>
+
+</head>
+
+
+<body onload="load();">
+  <form class="form-signin" method="POST" action="/newuser">
+
+    <div class="text-center mb-4">
+      <img class="mb-4" src="{{ url_for('static', filename='Assets/pilogo.png') }}" alt="">
+      <h1 >User Registration</h1>
+    </div>
+
+    <div class="form-label-group">
+      <input type="text" id="Name" name="Name" class="form-control" placeholder="Name" required autofocus>
+      <label id="first" for="Name">Name</label>
+    </div>
+
+    <div class="form-label-group">
+      <input type="email" id="Email" name="Email" class="form-control" placeholder="Email" required>
+      <label for="Email">Email</label>
+    </div>
+
+    <button id="sec" class="btn btn-lg btn btn-danger btn-block" type="submit" ">Submit</button>
+    
+
+  </form>
+
+  <!-- Material Walkthrough plugin -->
+    <!-- JQuery 3.1 minified -->
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script src="{{ url_for('static', filename='material-walkthrough/dist/material-walkthrough.min.js') }}"></script>
+  <script type="text/javascript">
+    function load() {
+      $.walk([
+      {
+         target: '#first', // Your target
+         content: '<h3  style="color:white;">Enter the name and email of the new user</h3>', // Hey, it supports HTML codes too!
+         color: '#bc1142', // Can be any CSS color, rgb or hex.
+         acceptText: 'OK'
+      },
+       {
+         target: '#sec', // Your target
+         content: '<h3  style="color:white;">Submit to get redirected to capture page</h3>', // Hey, it supports HTML codes too!
+         color: '#67152c', // Can be any CSS color, rgb or hex.
+         acceptText: 'OK'
+      }
+      ]);
+    }
+  </script>
+</body>
+
+</html>
