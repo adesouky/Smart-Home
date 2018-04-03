@@ -1,21 +1,17 @@
-//this code uses LED as signal to distinguish if anyone is in the range
-
 import RPi.GPIO as GPIO
 import time
 
 GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(11, GPIO.IN)         #Read output from PIR motion sensor
-GPIO.setup(3, GPIO.OUT)         #LED output pin
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(16, GPIO.IN)         #Read output from PIR motion sensor
 
 while True:
-  i=GPIO.input(11)
+  i=GPIO.input(16)
   if i==0:                 #When output from motion sensor is LOW
-    print "No intruders",i
-    GPIO.output(3, 0)  #Turn OFF LED
+    print ("NO")
     time.sleep(0.1)
 
   elif i==1:               #When output from motion sensor is HIGH
-    print "Intruder detected",i
-    GPIO.output(3, 1)  #Turn ON LED
-    time.sleep(0.1)
+    print ("IN")
+
+time.sleep(0.1)
