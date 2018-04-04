@@ -15,7 +15,7 @@ def callback(sound):
 		knocks++;
 	
 	if knocks >= 4:
-	
+		print "door unlocked"
 	
 GPIO.add_event_detect(sound, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
 GPIO.add_event_callback(sound, callback)  # assign function to GPIO PIN, Run function on change
