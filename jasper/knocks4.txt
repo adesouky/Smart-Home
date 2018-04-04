@@ -10,13 +10,15 @@ GPIO.setup(sound, GPIO.IN)
 
 def callback(sound):
 	t=0
+	
 	if GPIO.input(sound):
 		start = time.time()
-		while time.time()-start < 2:
-			if GPIO.input(!sound):
-				print 'knock not long'
-		else:
-			print 'long knock'
+		while time.time()-start < 0.5:
+			if GPIO.input(sound)==1:
+				print 'long knock'
+				break
+			else:
+				print 'short knock'
 			
 		
 			

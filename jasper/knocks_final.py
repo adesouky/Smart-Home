@@ -18,7 +18,14 @@ def callback(sound):
 	if GPIO.input(sound):
 		print 'first knock detected'
 		t=1
-		time.sleep(2)
+		
+		time1 = time.time()
+		
+		while time.time()-time1<3:
+			if GPIO.input(sound)
+			print "too early for knock 2"
+			return
+
 		start = time.time()
 		
 		while time.time()-start < 3:
@@ -29,8 +36,13 @@ def callback(sound):
 		
 		if t!=2:
 			return
-
-		time.sleep(2)
+		
+		time2 = time.time()
+		
+		while time.time()-time2<3:
+			if GPIO.input(sound)
+			print "too early for knock 3"
+			return
 		
 		start2 = time.time()
 		t2=0
