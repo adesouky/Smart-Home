@@ -4,15 +4,17 @@ import time
 
 #GPIO SETUP
 sound = 18
-knocks = 0
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(sound, GPIO.IN)
 
 def callback(sound):
-        if GPIO.input(sound):
+        
+	global knocks = 0;
+
+	if GPIO.input(sound):
                 print "Knock Detected!"
-		knocks++;
+		knocks+=1;
 	
 	if knocks >= 4:
 		print "door unlocked"
