@@ -7,7 +7,7 @@ from threading import Thread, Lock
 from app_utils import getTimezone
 from semantic.dates import DateService
 
-WORDS = ["ALARM","SET","AN"]
+WORDS = ["ALARM","SET"]
 
 hours = []
 lock = Lock()
@@ -83,7 +83,7 @@ def text2num(s):
 
 def alarmclock(profile, mic,*args):
 
-	print 'set up !'
+	print 'set alarm'
 
 	while(len(hours)!=0):
 		tz = getTimezone(profile)
@@ -103,7 +103,7 @@ def alarmclock(profile, mic,*args):
 				#suppress the hour if ringed
 				del hours[i]
 		lock.release()
-	print 'exit, no more alarm to ring'
+	print 'exit'
 	
 
 def handle(text, mic, profile):
