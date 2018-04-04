@@ -29,17 +29,17 @@ def callback(sound):
 		
 		start2 = time.time()
 		t2=0
-
 		while time.time()-start2 < 8:
 			if GPIO.input(sound):
 				print 'knock detected'
 				t2 += 1
-			if t2>4
+				time.sleep(1)
+			if t2 >= 4
 				break
 		if t+t2 >= 6:
 			print 'door unlocked'		
 			
-GPIO.add_event_detect(sound, GPIO.BOTH, bouncetime=300)  # let us know when the pin goes HIGH or LOW
+GPIO.add_event_detect(sound, GPIO.BOTH, bouncetime=100)  # let us know when the pin goes HIGH or LOW
 GPIO.add_event_callback(sound, callback)  # assign function to GPIO PIN, Run function on change
 
 # infinite loop
