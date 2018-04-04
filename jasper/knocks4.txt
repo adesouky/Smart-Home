@@ -15,7 +15,7 @@ def callback(sound):
 		while time.time()-start < 2:
 			if GPIO.input(!sound):
 				print 'knock not long'
-		else 
+		else:
 			print 'long knock'
 			
 		
