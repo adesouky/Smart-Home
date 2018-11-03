@@ -21,13 +21,16 @@
 </p>
 <br>
 
-### :hushed: Facial Recognition
+### :hushed:  Facial Recognition
 <p align="center">
   <figure>
    <img src="static/Description/description_5.jpg" width=400 alt="Smart Home-Door"/>
-  <figcaption>This is my caption text.</figcaption>
+  <figcaption>Whitelist</figcaption>
   </figure>
-  <img src="static/sneakPeak/sneak_peak_13.png" width=200 alt="Smart Home-Door"/>
+  <figure>
+   <img src="static/Description/description_4.jpg" width=400 alt="Smart Home-Door"/>
+  <figcaption>LiveStream</figcaption>
+  </figure>
 </p>
 <br>
 
