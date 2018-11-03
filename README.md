@@ -5,8 +5,9 @@
 
 <h1 align="center"> SmartHome-Door </h1>
 
+# High-Level Design
 <p align="center">
-  <img src="static/Description/description_1.png" width=400 alt="Smart Home-Door"/>
+  <img src="static/Description/description_1.png" width=600 alt="Smart Home-Door"/>
 </p>
 
 
