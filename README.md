@@ -28,7 +28,7 @@
   <figcaption>Whitelist</figcaption>
   </figure>
   <figure>
-   <img src="static/Description/description_4.jpg" width=400 alt="Smart Home-Door"/>
+   <img src="static/Description/description_4.png" width=400 alt="Smart Home-Door"/>
   <figcaption>LiveStream</figcaption>
   </figure>
 </p>
