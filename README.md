@@ -5,6 +5,11 @@
 
 <h1 align="center"> SmartHome-Door </h1>
 
+<p align="center">
+  <img src="static/Description/description_1.png" width=400 alt="Smart Home-Door"/>
+</p>
+
+
 # :camera: Sneak Peak
 ### :post_office: Smart Home Prototype:
 <p align="center">
