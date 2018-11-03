@@ -20,12 +20,13 @@
   <img src="static/sneakPeak/sneak_peak_3.jpg" width=400 alt="Smart Home-Door"/>
 </p>
 <br>
+
 ### :hushed: Facial Recognition
 <p align="center">
-  <p>
-  <img src="static/Description/description_5.jpg" width=400 alt="Smart Home-Door"/>
-    <em>image_caption</em>
-   </p> 
+  <figure>
+   <img src="static/Description/description_5.jpg" width=400 alt="Smart Home-Door"/>
+  <figcaption>This is my caption text.</figcaption>
+  </figure>
   <img src="static/sneakPeak/sneak_peak_13.png" width=200 alt="Smart Home-Door"/>
 </p>
 <br>
