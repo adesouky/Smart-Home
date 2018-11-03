@@ -23,14 +23,11 @@
 
 ### :hushed:  Facial Recognition
 <p align="center">
-  <figure>
+
    <img src="static/Description/description_5.jpg" width=400 alt="Smart Home-Door"/>
-  <figcaption>    Whitelist    </figcaption>
-  </figure>
-  <figure>
+
    <img src="static/Description/description_4.png" width=400 alt="Smart Home-Door"/>
-  <figcaption>    LiveStream    </figcaption>
-  </figure>
+
 </p>
 <br>
 
