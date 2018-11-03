@@ -35,11 +35,7 @@
 
 ### :globe_with_meridians: Web App:
 <p align="center">
-  <img src="static/sneakPeak/sneak_peak_4.png" width=400 alt="Smart Home-Door"/>
-  <img src="static/sneakPeak/sneak_peak_5.png" width=400 alt="Smart Home-Door"/>
   <img src="static/sneakPeak/sneak_peak_7.png" width=400 alt="Smart Home-Door"/>
-  <img src="static/sneakPeak/sneak_peak_8.png" width=400 alt="Smart Home-Door"/>
   <img src="static/sneakPeak/sneak_peak_9.png" width=400 alt="Smart Home-Door"/>
-    <img src="static/sneakPeak/sneak_peak_6.png" width=400 alt="Smart Home-Door"/>
 </p>
 <br>
