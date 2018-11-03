@@ -1,9 +1,10 @@
 
+<h1 align="center"> SmartHome-Door </h1>
 <p align="center">
   <img src="Web App/homepage/img/pilogo.png" alt="Smart Home-Door"/>
 </p>
 
-<h1 align="center"> SmartHome-Door </h1>
+
 
 # High-Level Design
 <p align="center">
