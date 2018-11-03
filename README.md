@@ -20,14 +20,22 @@
   <img src="static/sneakPeak/sneak_peak_3.jpg" width=400 alt="Smart Home-Door"/>
 </p>
 <br>
+### :hushed: Facial Recognition
+<p align="center">
+  <p>
+  <img src="static/Description/description_5.jpg" width=400 alt="Smart Home-Door"/>
+    <em>image_caption</em>
+   </p> 
+  <img src="static/sneakPeak/sneak_peak_13.png" width=200 alt="Smart Home-Door"/>
+</p>
+<br>
 
 ### :iphone: Mobile App:
 <p align="center">
   <img src="static/sneakPeak/sneak_peak_11.png" width=200 alt="Smart Home-Door"/>
   <img src="static/sneakPeak/sneak_peak_13.png" width=200 alt="Smart Home-Door"/>
   <img src="static/sneakPeak/sneak_peak_14.png" width=200 alt="Smart Home-Door"/>
-  <img src="static/sneakPeak/sneak_peak_16.png" width=200 alt="Smart Home-Door"/>
-  
+  <img src="static/sneakPeak/sneak_peak_16.png" width=200 alt="Smart Home-Door"/> 
 </p>
 <br>
 
@@ -37,3 +45,5 @@
   <img src="static/sneakPeak/sneak_peak_9.png" width=400 alt="Smart Home-Door"/>
 </p>
 <br>
+
+
