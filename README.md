@@ -8,7 +8,8 @@
 
 # High-Level Design
 <p align="center">
-  <img src="static/Description/description_1.png" width=600 alt="Smart Home-Door"/>
+  <img src="static/Description/description_1.png" width=400 alt="Smart Home-Door"/>
+  <img src="static/Description/description_8.png" width=400 alt="Smart Home-Door"/>
 </p>
 
 
