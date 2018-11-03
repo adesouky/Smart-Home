@@ -28,7 +28,7 @@
   <img src="static/sneakPeak/sneak_peak_13.png" width=200 alt="Smart Home-Door"/>
   <img src="static/sneakPeak/sneak_peak_14.png" width=200 alt="Smart Home-Door"/>
   <img src="static/sneakPeak/sneak_peak_15.png" width=200 alt="Smart Home-Door"/>
-  <img src="static/sneakPeak/sneak_peak_16.png" width=200 alt="Smart Home-Door"/>
+  
 </p>
 <br>
 
